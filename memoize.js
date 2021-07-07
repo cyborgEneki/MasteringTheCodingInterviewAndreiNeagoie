@@ -1,12 +1,18 @@
-let cache = {};
+function memoizeAddToEighty() {
+    let cache = {};
 
-function memoizeAddToEighty(n) {
-    if (n in cache) {
+    return function(n) {
+        if (n in cache) {
+            return cache[n];
+        }
+
+        console.log('long time');
+        cache[n] = n + 80;
         return cache[n];
     }
-
-    cache[n] = n + 80;
-    return cache[n];
 }
 
-memoizeAddToEighty(90);
+const memoized = memoizeAddToEighty();
+
+console.log('first', memoizeAddToEighty(90));
+console.log('second', memoizeAddToEighty(90));
