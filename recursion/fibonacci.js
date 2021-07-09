@@ -1,3 +1,4 @@
+// n is the index of the number we want to return in the sequence
 function fibonacci(n) {
     if (n < 2) {
         return n;
